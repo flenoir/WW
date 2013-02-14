@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Wowza Media Server - VideoOnDemandStreaming (SilverlightPlayer)</title>
+
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection"/>
+	<link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print"/>
+	<!--[if lt IE 8]><link rel="stylesheet" href="../../blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+
+	<!-- Import fancy-type plugin for the sample page. -->
+	<link rel="stylesheet" href="css/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection"/>
+	<link rel="stylesheet" href="css/wowza.css" type="text/css" />
+    <script type="text/javascript" src="Silverlight.js"></script>
+
+</head>
+<body>
+    <div class="container">
+		<!-- HEADER -->
+        <div class="span-18">
+            <h1>Video On Demand Streaming</h1>
+            <h2>Silverlight Player</h2>
+        </div>
+        <div class="span-6 last">
+            <img src="img/wowza-logo.png" class="logo" width="220" height="49"/>
+        </div>
+        <hr class="heading"/>
+		<!-- END HEADER -->
+		<!-- EXAMPLE PLAYER: WIDTH of this player should be 630px, height will vary depending on the example-->
+        <div class="span-16">
+	<div id="silverlightControlHost">
+		<object data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="650" height="500">
+			<param name="source" value="ClientBin/SimpleSmoothStreaming.xap"/>
+			<param name="onerror" value="onSilverlightError" />
+			<param name="background" value="white" />
+			<param name="minRuntimeVersion" value="4.0.50401.0" />
+			<param name="autoUpgrade" value="true" />
+			<a href="http://go.microsoft.com/fwlink/?LinkID=149156&v=4.0.50401.0" style="text-decoration: none;">
+				<img src="http://go.microsoft.com/fwlink/?LinkID=161376" alt="Get Microsoft Silverlight" style="border-style: none"/>
+			</a>
+		</object><iframe id='_sl_historyFrame' style='visibility:hidden;height:0;width:0;border:0px'></iframe></div>  
+		</div>
+		<!-- SIDEBAR -->
+        <div class="span-7 prepend-1 last">
+        	<h3>Description</h3>
+			<p>This package contains source code for a sample Microsoft Silverlight video on demand streaming player. It is based on the open source Microsoft Media Platform: Player Framework (SMF). It will play single and adaptive bitrate Smooth Streams over HTTP.</p> 
+            <h3>Installation</h3>
+            <p>In the VideoOnDemandStreaming example directory:<br>
+            <ul>
+                <li>LINUX<br>
+                    Run <strong>./installall.sh</strong>
+                <li>WINDOWS 7 / WINDOWS 8<br>
+                    Right-click <strong>installall.bat</strong> and then select <strong>Run as administrator</strong>
+                <li>WINDOWS   SERVER<br>
+Double-click the <strong>installall.bat</strong> file                 
+                <li>MAC OS X<br>
+                    Double-click the <strong>installall.command</strong> file
+                </ul>
+			<h3>Instructions</h3>
+            <ol>
+                <li>Read the Tutorials below.
+                <li>Click the <strong>Connect</strong> button. The video will start playing.                                
+            </ol>
+            <h3>Tutorials</h3>
+            <ol>
+            <li><a href="http://www.wowza.com/forums/content.php?290-How-to-play-your-first-video-on-demand-stream-(video-tutorial)">How to play your first video on demand stream (video tutorial)</a>
+            <li><a href="http://www.wowza.com/forums/content.php?35-How-to-set-up-video-on-demand-streaming">How to set up video on-demand streaming</a>
+			</ol>
+            <h3>Additional Resources</h3>
+            <ol>
+            <li><a href="http://www.wowza.com/forums/content.php?3-quick-start-guide">Quick Start Guide</a>
+            <li><a href="http://www.wowza.com/forums/forumdisplay.php?50-Video-On-Demand-Streaming-Discussion">Video On Demand Streaming Discussion Forum</a>
+            <li><a href="http://www.wowza.com/forums/content.php?9-video-on-demand-streaming">Video On Demand Streaming Articles</a>
+			</ol>
+    		<h3>To play your own content</h3>
+            <ol>
+            	<li>Copy your video files to the Wowza <strong>[install-dir]\content</strong> directory.
+                <li>In the <strong>Stream</strong> field, change the mp4 file name to match one of your video files.
+                <li>Click the <strong>Play</strong> button. Your video will start playing.
+			</ol>
+			<h3>Next Steps</h3>
+			<p>To use the source code in Visual Studio:<p>
+            <ul>
+            	<li>Double-click <strong>src/SimpleSmoothStreaming.sln</strong> to open the project in Visual Studio
+				<li>The SMF source is located here: <a target="_new" href="http://smf.codeplex.com/">SMF CodePlex</a>
+            </ul>
+        </div>
+		<!-- FOOTER -->
+        <div class="span-24">
+            <hr class="heading">
+            <div class="span-1">
+            	<img src="img/icon-company.png" width="34" height="35" />
+            </div>
+            <div class="span-23 last copyright">
+                &nbsp;&#169;&nbsp;2012 Wowza Media Systems, LLC. All rights reserved.
+            </div>
+        </div>
+		<!-- END FOOTER -->
+	</div>
+</body>
+</html>

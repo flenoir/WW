@@ -1,0 +1,318 @@
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{ margin:0; padding:0;}
+table{ border-collapse:collapse; border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,var{ font-style: normal; font-weight: normal;}
+ol,ul{ list-style: none;}
+q:before,q:after{content: "";}
+abbr,acronym{border: 0;}
+body{background: url("../img/FOND-carte.png")no-repeat;font-family: Arial, Verdana, sans-serif; font-size: 12px; line-height: 16px;}
+a{color: #0072bc;cursor: pointer;text-decoration: none;}
+.cb{clear: both;}
+
+
+
+
+/* H1 */
+h1{font-family: 'BebasNeueRegular';
+   font-size: 38px;
+   line-height: 42px;
+   font-weight: normal;
+   color: #fff;   
+   text-shadow: 2px 2px 2px black;
+   text-transform: uppercase;
+}
+
+/* H2 */
+h2{font-family: 'BebasNeueRegular';
+   font-size: 24px;
+   line-height: 42px;
+   font-weight: normal;
+   color: #62bcda;    
+}
+
+/* H3 pour temperatures*/
+h3{font-family: 'BebasNeueRegular';
+   font-size: 36px;
+   line-height: 42px;
+   font-weight: normal;
+   color: #000;
+   background: #fff;
+   padding-top:5px; /*permet le centrage vertical*/
+   padding-left:12px; /*permet le centrage horizontal*/
+   background:-moz-linear-gradient(top,#f5f5f5,#b1b1b1); /* degradé sur le fond */
+   background:-webkit-linear-gradient(top, #F0F0F0 100%, #FFFFFF 60%);
+   -webkit-border-radius:5px; /* coins arrondis */
+   -moz-border-radius:5px;
+   border-radius:5px;
+   text-shadow:0px 1px 0px white; /* effet blanc sur bas du texte */
+   -webkit-box-shadow:0 0 5px rgba(0,0,0,0.5), /* effet detourage boite */
+                       0 -1px 0 rgba(255,255,255,0.4);
+   -moz-box-shadow:0 0 5px rgba(0,0,0,0.5),
+                   0 -1px 0 rgba(255,255,255,0.4);
+   box-shadow:0 0 5px rgba(0,0,0,0.5),
+              0 -1px 0 rgba(255,255,255,0.4);
+   }
+
+/* H4 pour vitesse du vent*/
+h4{font-family: 'BebasNeueRegular';
+   font-size: 20px;
+   line-height: 42px;
+   font-weight: normal;
+   color: #000;   
+   /*text-shadow: 2px 2px 2px white;*/
+  }
+
+
+
+/* FONT EXOTIQUE */
+@font-face {
+  font-family: 'BebasNeueRegular';
+    src: url('../Font/Bebas/BebasNeue-webfont.eot');
+    src: url('../Font/Bebas/BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../Font/Bebas/BebasNeue-webfont.woff') format('woff'),
+         url('../Font/Bebas/BebasNeue-webfont.ttf') format('truetype'),
+         url('../Font/Bebas/BebasNeue-webfont.svg#BebasNeueRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    
+            }
+
+html, body #home{
+    height: 100%;
+}
+
+/* LEFT */
+
+#header{ 
+    width: 1280px;
+    height: 36px;
+           }
+
+#header.bkg{
+    background: url(img/bkg-left.png) repeat;
+    }
+    
+#header h1{
+    margin-left: 115px;
+    padding-top: 100px;
+    }
+
+      
+/* RIGHT */
+
+#conteneur{width: 1280px;
+           height: 684px;
+           position:relative;
+           
+}
+
+
+/* Condition */
+.condition{font-family: 'BebasNeueRegular';
+   font-size: 18px;
+   line-height: 30px;
+   font-weight: normal;
+   color: #fff;    
+}
+
+
+/* Datameteo */
+.datemeteo{font-family: 'BebasNeueRegular';
+   font-size: 40px;
+   line-height: 40px;
+   font-weight: normal;
+   color: #000;
+   text-shadow:2px 2px 5px #f5f5f5;
+   position: absolute;
+   margin-left: 100px;
+   margin-top: 60px;
+   text-transform: uppercase;
+   z-index: 2; /*ne marche que quand la position est déclarée */
+}
+
+#fond_datemeteo{
+    position: absolute;
+    height: 110px;
+    width: 400px;
+    margin-top: 12px;
+    margin-left: 90px;
+    background-color: #fff;
+    opacity: 0.3;   
+    z-index: 1; /*ne marche que quand la position est déclarée */
+    box-shadow: 2px 2px 5px grey;
+}
+
+
+/* Montpellier */
+
+#montpellier{
+  position: absolute;
+  margin-top: 230px;
+  margin-left: 450px;
+  width: 50px;
+        }
+
+#ventmontpellier{
+  position: absolute;
+  margin-top: 300px;
+  margin-left: 450px;
+  width: 50px;
+}
+
+
+/* Nimes */
+
+#nimes{
+  position: absolute;
+  margin-top: 170px;
+  margin-left: 555px;
+  width: 50px;
+}
+
+
+/* Arles */
+
+#arles{
+  position: absolute;
+  margin-top: 320px;
+  margin-left: 610px;
+  width: 50px;
+}
+
+
+/* Sete */
+
+#marseille{
+  position: absolute;
+  margin-top: 400px;
+  margin-left: 760px;
+  width: 50px;
+}
+
+#ventmarseille{
+  position: absolute;
+  margin-top: 400px;
+  margin-left: 700px;
+  width: 50px;
+}
+
+#ajaccio{
+  position: absolute;
+  margin-top: 520px;
+  margin-left: 1110px;
+  width: 50px;
+}
+
+#ventajaccio{
+  position: absolute;
+  margin-top: 560px;
+  margin-left: 1180px;
+  width: 50px;
+}
+
+#nice{
+  position: absolute;
+  margin-top: 190px;
+  margin-left: 1130px;
+  width: 50px;
+}
+
+#ventnice{
+  position: absolute;
+  margin-top: 220px;
+  margin-left: 1055px;
+  width: 50px;
+}
+
+#narbonne{
+  position: absolute;
+  margin-top: 435px;
+  margin-left: 310px;
+  width: 50px;
+}
+
+#ventnarbonne{
+  position: absolute;
+  margin-top: 420px;
+  margin-left: 380px;
+  width: 50px;
+}
+
+#beziers{
+  position: absolute;
+  margin-top: 300px;
+  margin-left: 335px;
+  width: 50px;
+}
+
+#frejus{
+  position: absolute;
+  margin-top: 255px;
+  margin-left: 990px;
+  width: 50px;
+}
+
+#toulon{
+  position: absolute;
+  margin-top: 440px;
+  margin-left: 920px;
+  width: 50px;
+}
+
+#digne_les_bains{
+  position: absolute;
+  margin-top: 110px;
+  margin-left: 890px;
+  width: 50px;
+}
+
+#aix_en_provence{
+  position: absolute;
+  margin-top: 230px;
+  margin-left: 780px;
+  width: 50px;
+}
+
+#ventaix{
+  position: absolute;
+  margin-top: 240px;
+  margin-left: 730px;
+  width: 50px;
+}
+
+#ales{
+  position: absolute;
+  margin-top: 90px;
+  margin-left: 500px;
+  width: 50px;
+}
+
+#perpignan{
+  position: absolute;
+  margin-top: 480px;
+  margin-left: 240px;
+  width: 50px;
+}
+
+#avignon{
+  position: absolute;
+  margin-top: 145px;
+  margin-left: 630px;
+  width: 50px;
+}
+
+
+#bastia{
+  position: absolute;
+  margin-top: 290px;
+  margin-left: 1165px;
+  width: 50px;
+}
+
+#carcassonne{
+  position: absolute;
+  margin-top: 310px;
+  margin-left: 170px;
+  width: 50px;
+}

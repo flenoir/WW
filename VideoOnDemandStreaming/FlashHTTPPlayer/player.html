@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Flash HTTP Player - Video On Demand Streaming</title>
+
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="css/wowza.css" type="text/css" />
+        
+        <!-- Include CSS to eliminate any default margins/padding and set the height of the html element and 
+         the body element to 100%, because Firefox, or any Gecko based browser, interprets percentage as 
+         the percentage of the height of its parent container, which has to be set explicitly.  Fix for
+         Firefox 3.6 focus border issues.  Initially, don't display flashContent div so it won't show 
+         if JavaScript disabled.
+         -->
+        <style type="text/css" media="screen"> 
+  
+            object:focus { outline:none; }
+            #flashContent { display:none; }
+            </style>
+        
+        <!-- Enable Browser History by replacing useBrowserHistory tokens with two hyphens -->
+        <!-- BEGIN Browser History required section -->
+        <link rel="stylesheet" type="text/css" href="history/history.css" />
+        <script type="text/javascript" src="history/history.js"></script>
+        <!-- END Browser History required section -->  
+        
+        <script type="text/javascript" src="swfobject.js"></script>
+        <script type="text/javascript">
+            // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection.
+            var swfVersionStr = "10.2.0";
+            // To use express install, set to playerProductInstall.swf, otherwise the empty string.
+            var xiSwfUrlStr = "playerProductInstall.swf";
+            var flashvars = {};
+            var params = {};
+            params.quality = "high";
+            params.bgcolor = "#ffffff";
+            params.allowscriptaccess = "sameDomain";
+            params.allowfullscreen = "true";
+            var attributes = {};
+            attributes.id = "VOD";
+            attributes.name = "VOD";
+            attributes.align = "middle";
+            swfobject.embedSWF(
+                               "VOD.swf", "flashContent",
+                               "655", "530",
+                               swfVersionStr, xiSwfUrlStr,
+                               flashvars, params, attributes);
+            // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
+            swfobject.createCSS("#flashContent", "display:block;text-align:left;");
+            
+            </script>
+</head>
+<body>
+    <div class="container">
+		<!-- HEADER -->
+        <div class="span-18">
+            <h1>Video On Demand Streaming</h1><h2>Flash HTTP Player</h2>
+        </div>
+        <div class="span-6 last">
+            <img src="img/wowza-logo.png" class="logo" width="220" height="49"/>
+        </div>
+        <hr class="heading">
+		<!-- END HEADER -->
+		<!-- EXAMPLE PLAYER: WIDTH of this player should be 630px, height will vary depending on the example-->
+        <div class="span-16">
+			<!-- SWFObject's dynamic embed method replaces this alternative HTML content with Flash content when enough
+             JavaScript and Flash plug-in support is available. The div is initially hidden so that it doesn't show
+             when JavaScript is disabled.
+             -->
+            <div id="flashContent">
+                <p>
+                To view this page ensure that Adobe Flash Player version
+                10.2.0 or greater is installed.
+                </p>
+                <script type="text/javascript">
+                    var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://");
+                    document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='"
+                                   + pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" );
+                    </script>
+            </div>
+            
+            <noscript>
+                <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="655" height="530" id="VOD">
+                    <param name="movie" value="VOD.swf" />
+                    <param name="quality" value="high" />
+                    <param name="bgcolor" value="#ffffff" />
+                    <param name="allowScriptAccess" value="sameDomain" />
+                    <param name="allowFullScreen" value="true" />
+                    <!--[if !IE]>-->
+                    <object type="application/x-shockwave-flash" data="VOD.swf" width="655" height="530">
+                        <param name="quality" value="high" />
+                        <param name="bgcolor" value="#ffffff" />
+                        <param name="allowScriptAccess" value="sameDomain" />
+                        <param name="allowFullScreen" value="true" />
+                        <!--<![endif]-->
+                        <!--[if gte IE 6]>-->
+                        <p>
+                        Either scripts and active content are not permitted to run or Adobe Flash Player version
+                        10.2.0 or greater is not installed.
+                        </p>
+                        <!--<![endif]-->
+                        <a href="http://www.adobe.com/go/getflashplayer">
+                            <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash Player" />
+                        </a>
+                        <!--[if !IE]>-->
+                    </object>
+                    <!--<![endif]-->
+                </object>
+            </noscript>
+			<h3>To use the source code in Flash Builder</h3>
+            <ol>
+            <li>Adobe Flex SDK 4.5.1 or later is required. If necessary, install Flex SDK:
+            <a target="_new" href="http://www.adobe.com/devnet/flex/flex-sdk-download.html">Latest Flex SDK</a> or <a target="_new" href="http://sourceforge.net/adobe/flexsdk/wiki/Download%20Flex%204.5/">Flex 4.5 Downloads</a>
+
+            <li>Download and unzip Open Source Media Framework (OSMF) 1.6 or later: <a target="_new" href="http://sourceforge.net/projects/osmf.adobe/">Latest OSMF</a>
+            <li>Start Flash Builder, and then select a new workspace location.
+            <li>Make sure that Flex SDK 4.5.1 or later is the default SDK. You can add or select the SDK under Windows > Preferences > Flash Builder > Installed Flex SDKs.
+            <li>From the Flash Builder menu, select File > Import > Other Existing Projects into Workspace.
+            <li>Navigate to the unzipped OSMF download, and then select the <strong>samples\ChromeLibrary</strong>, <strong>samples\MediaContainerUIComponentLibrary</strong>, and <strong>framework\OSMF</strong> projects.  
+            <li>With all of the above projects selected, from the Flash Builder menu, select Project > Properties, and then on the Flex Compiler tab:            <ul>
+            <li>In <strong>Flex SDK version</strong>, select the Flex SDK version to use (either the default version or a specific version). The minimum supported version is Flex SDK 4.5.1.</li>            <li>In <strong>Adobe Flash Player options</strong>, specify the Flash Player version to use with the Flex SDK. The minimum version required by Flex SDK 4.6 is <strong>11</strong>.<strong>1</strong>.<strong>0</strong>. For Flex SDK 4.5.x, it is <strong>10</strong>.<strong>2</strong>.<strong>0</strong>.</li>
+            <li>In <strong>Additional compiler arguments</strong>, add the following (in bold):<BR>
+            <b>-locale en_US -define CONFIG::LOGGING true -define CONFIG::PLATFORM true -define CONFIG::MOCK false -define CONFIG::FLASH_10_1 true</b></li>
+            <li>Click Apply</li>
+            </ul>
+            </li>
+            <li>Create a new Flex project named <strong>FlashHTTPPlayer</strong> (File > New > Project > Flex Project).
+            <li>Copy the contents of the package <strong>src</strong> folder to the project <strong>src</strong> folder.</li>
+            <li>In Project > Properties > Flex Build Path, on the Library Path tab:            <ul>
+            <li>In the Framework Linkage dropdown menu, select <strong>Merged into code</strong></li>
+            <li>Click Add Project, then OSMF, MediaContainerUIComponentLibrary, and ChromeLibrary
+            </ul>
+            </li>
+            </ol>
+</div>
+		<!-- SIDEBAR -->
+        <div class="span-7 prepend-1 last">
+        	<h3>Description</h3>
+			<p>This package contains source code for a Flash player using the OSMF Framework. It will play rtmp single and adaptive bitrate streams, and single and adaptive bitrate Flash sanjose (HTTP-only) streams.</p> 
+        	<h3>Installation</h3>
+            <p>In the /examples/VideoOnDemandStreaming  directory:</p>
+            <ul>
+                <li>LINUX<br>
+                    Run <strong>./installall.sh</strong>
+                <li>WINDOWS 7 / WINDOWS 8<br>
+                    Right-click <strong>installall.bat</strong> and then select <strong>Run as administrator</strong>
+                <li>WINDOWS   SERVER<br>
+                    Double-click the <strong>installall.bat</strong> file                 
+                <li>MAC OS X<br>
+                    Double-click the <strong>installall.command</strong> file
+                </ul>
+		<h3>Instructions</h3>
+            <ol>
+                <li>Read the Tutorials below.</a>                
+                <li>Click the <strong>Connect</strong> button. The video will start playing.
+            </ol>
+<h3>Tutorials</h3>
+            <ol>
+            <li><a href="http://www.wowza.com/forums/content.php?290-How-to-play-your-first-video-on-demand-stream-(video-tutorial)">How to play your first video on demand stream (video tutorial)</a>
+            <li><a href="http://www.wowza.com/forums/content.php?35-How-to-set-up-video-on-demand-streaming">How to set up video on-demand streaming</a>
+			</ol>
+            <h3>Additional Resources</h3>
+            <ol>
+            <li><a href="http://www.wowza.com/forums/content.php?3-quick-start-guide">Quick Start Guide</a>
+            <li><a href="http://www.wowza.com/forums/forumdisplay.php?50-Video-On-Demand-Streaming-Discussion">Video On Demand Streaming Discussion Forum</a>
+            <li><a href="http://www.wowza.com/forums/content.php?9-video-on-demand-streaming">Video On Demand Streaming Articles</a>
+			</ol>
+			<h3>To play your own content</h3>
+            <ol>
+            	<li>Copy your video files to the Wowza <strong>[install-dir]\content</strong> directory.
+                <li>In the <strong>Stream</strong> field, change the mp4 file name to match one of your video files.
+                <li>Click the <strong>Connect</strong> button. Your video will start playing.
+			
+			        <a href="http://www.wowzamedia.com/docredirect.php?doc=tutorialsVOD"></a>
+            </ol>
+        </div>
+		<!-- FOOTER -->
+        <div class="span-24">
+            <hr class="heading">
+            <div class="span-1">
+            	<img src="img/icon-company.png" width="34" height="35" />
+            </div>
+            <div class="span-23 last copyright">
+                &nbsp;&#169;&nbsp;2012 Wowza Media Systems, LLC. All rights reserved.
+            </div>
+        </div>
+		<!-- END FOOTER -->
+	</div>
+</body>
+</html>

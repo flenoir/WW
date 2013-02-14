@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--VOD-->
+<!--VOD-->
+<!--VOD-->
+<!--VOD-->
+<local:Player styleName="app"
+			  xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			  xmlns:s="library://ns.adobe.com/flex/spark" 
+			  xmlns:mx="library://ns.adobe.com/flex/mx"
+			  xmlns:local="*"
+			  xmlns:samples="org.osmf.samples.*"
+			  creationComplete="init()"
+			  height="530"
+			  width="655"  backgroundAlpha="0.0" backgroundColor="#FFFFFF">
+	
+	<mx:Canvas id="backdrop" x="0" y="0" width="100%" height="525" backgroundAlpha="0.0"
+			   backgroundColor="#ffffff" contentBackgroundAlpha="1.0">
+		<mx:Text id="playerVersion" x="0" y="10" width="243" height="18" color="#000000"
+				 fontSize="10" textAlign="left"/>
+		<s:TextArea id="videoFrame" x="0" y="28" width="636" height="360"
+					contentBackgroundAlpha="0.0"/>
+		<s:Label id="videoBackground" visible="true" x="0" y="28" width="636" height="360"
+				 backgroundAlpha="1.0" backgroundColor="#000000"/>
+		<samples:MediaContainerUIComponent id="videoContainer" visible="true" x="0" y="28" width="636"
+										   height="360" includeInLayout="true"/>
+		<mx:HSlider id="seekBar" x="-7" y="380" width="648" height="20"
+					enabled="{isConnected}"
+					showTrackHighlight="true" 
+					trackSkin="@Embed(source='assets/track.png')" 
+					trackHighlightSkin="@Embed(source='assets/highlight.png')" />
+		<mx:FormItem x="0" y="403" width="645" height="121" paddingBottom="0" paddingTop="0" paddingLeft="0" horizontalAlign="left" horizontalGap="0"
+					 indicatorGap="0">
+			<s:HGroup width="637" height="37" verticalAlign="baseline" horizontalAlign="left">
+				<mx:Button id="doRewind" width="59" label="Rew" enabled="{isConnected}"/>
+				<mx:Button id="doPlay" width="62" label="Pause" enabled="{isConnected}"/>
+				<s:Label width="68" height="18" text="Volume" textAlign="right"
+						 verticalAlign="middle"/>
+				<mx:HSlider id="volumeLevel" width="224" height="30" enabled="{isConnected}" maximum="1" value=".5"/>
+				<s:Label width="168"/>
+				<mx:Button id="doFullscreen" visible="{isConnected}" icon="@Embed(source='assets/fullscreen.png')" width="23" x="596" y="2"/>
+			</s:HGroup>
+			<s:HGroup x="12" y="34" width="646" height="29" verticalAlign="middle">
+				<mx:Text styleName="bold" text="Stream:"/>
+				<mx:TextInput id="connectStr" width="494" paddingLeft="0"/>
+				<mx:Button id="connectButton" width="80" label="Connect"/>
+			</s:HGroup>
+			<s:HGroup x="10" y="71" width="643" height="32" verticalAlign="middle">
+				<mx:Text width="48" styleName="bold" text="Status:" textAlign="right"/>
+				<mx:Text id="prompt" width="581.5" color="#000000" textAlign="left"/>
+			</s:HGroup>
+		</mx:FormItem>
+	</mx:Canvas>
+	<fx:Style>
+		@namespace mx "library://ns.adobe.com/flex/mx";
+		.app
+		{
+			backgroundColor:#000000;
+			backgroundAlpha:0;
+			
+		}
+		.bold
+		{
+			font-weight:bold;
+		}
+	</fx:Style>
+</local:Player>

@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>iOS &amp; Max OS X - Video On Demand Streaming</title>
+
+    <script language="javascript">AC_FL_RunContent = 0;</script>
+    <script src="AC_RunActiveContent.js" language="javascript"></script>
+    <!-- Framework CSS -->
+	<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="css/wowza.css" type="text/css" />
+    <script>
+        function supports_hls_video() {
+            if (videoObj.canPlayType)
+            {
+                if (videoObj.canPlayType('application/x-mpegURL'))
+                {
+                    if(videoObj.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"') )
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+		<!-- HEADER -->
+        <div class="span-18">
+            <h1>Video On Demand Streaming</h1>
+            <h2>iOS and Mac OS X - Safari</h2>
+        </div>
+        <div class="span-6 last">
+            <img src="img/wowza-logo.png" class="logo" width="220" height="49"/>
+        </div>
+        <hr class="heading">
+		<!-- END HEADER -->
+		<!-- EXAMPLE PLAYER: WIDTH of this player should be 630px, height will vary depending on the example-->
+        <div class="span-16">
+            <div id="notsupported">
+                <br/>
+                <br/>
+                <br/>
+                <center><h2><b>HTML5 or HLS is not supported in this browser</b></h2></center>
+                <br/>
+                <br/>
+                <br/>
+            </div>
+
+            <div id="supported">
+                <div>
+                    <style>
+                        video {
+                            background-color: #000000;
+                        }
+                        </style>
+                    <video id="videoObj" x-webkit-airplay="allow" controls alt="Example File" width="630" height="357"  onerror="failed(event)" oncanplay="canPlay()"/>
+                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <button id="playObj" type="button" style="width:60px" onclick="JavaScript:playControl()" disabled="disabled">Pause</button>
+                        </td>
+                        <td/>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <b>Stream:</b>
+                        </td>
+                        <td>
+                            <input id="connectStr" size = "80" type="text" placeholder="" value="http://localhost:1935/vod/mp4:sample.mp4/playlist.m3u8"/>
+                            <button id="connectObj" type="button" style="width:80px" onclick="JavaScript:connect()">Connect</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <b>Status:</b>
+                        </td>
+                        <td>
+                            <lable id="statusStr" size = "100" type="text" placeholder="" value=""/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+             <script>                 
+                 if ( supports_hls_video() ) {
+                     notsupported.style.display="none";
+                 }
+                 else {
+                     supported.style.display="none";
+                     videoObj.style.display="none";
+                 }
+                 function connect() {
+                     if(connectObj.textContent == "Disconnect") {
+                         connectObj.textContent = "Connect";
+                         playObj.disabled = "disabled";
+                         playObj.textContent = 'Pause';
+                         videoObj.pause();
+                         videoObj.src=null;
+                         videoObj.load();
+                         statusStr.textContent = "";
+                     }
+                     else {
+                         connectObj.textContent = "Disconnect";
+                         playObj.disabled = "";
+                         statusStr.textContent = "";
+                         videoObj.src = connectStr.value;
+                         videoObj.load();
+                     }
+                 }
+                 function canPlay() {
+                     playControl();
+                 }
+                 function playControl() {
+                     if (videoObj.paused == false) {
+                         videoObj.pause();
+                         playObj.textContent = 'Play';
+                     }
+                     else {
+                         videoObj.play();
+                         statusStr.textContent = "Playing";
+                         playObj.textContent = 'Pause';
+                     }
+                 }
+                 function failed(e) {
+                     // video playback failed - show a message saying why
+                     switch (e.target.error.code) {
+                         case e.target.error.MEDIA_ERR_ABORTED:
+                             statusStr.textContent = 'You aborted the video playback.';
+                             break;
+                         case e.target.error.MEDIA_ERR_NETWORK:
+                             statusStr.textContent = 'A network error caused the video download to fail part-way.';
+                             break;
+                         case e.target.error.MEDIA_ERR_DECODE:
+                             statusStr.textContent = 'The video playback was aborted due to a corruption problem or because the video used features your browser did not support.';
+                             break;
+                         case e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
+                             statusStr.textContent = 'The video could not be loaded, either because the server or network failed or because the format is not supported.';
+                             break;
+                         default:
+                             statusStr.textContent = 'An unknown error occurred.';
+                             break;
+                     }
+                 }
+                </script>
+                <h3>To play on an iOS device</h3>
+                <p>On an iOS device, enter the following URL in Safari:</p>
+                <h3>http://[wowza-ip-address]:1935/vod/mp4:sample.mp4/playlist.m3u8</h3>
+		</div>
+		<!-- SIDEBAR -->
+        <div class="span-7 prepend-1 last">
+        	<h3>Description</h3>
+			<p>This example demonstrates how to use Wowza on iOS and Mac OS X in Safari.</p> 
+            <h3>Installation</h3>
+            <p>In the /examples/VideoOnDemandStreaming  directory:<br>
+            <ul>
+                <li>LINUX<br>
+                    Run <strong>./installall.sh</strong>
+                <li>WINDOWS 7 / WINDOWS 8<br>
+                    Right-click <strong>installall.bat</strong> and then select <strong>Run as administrator</strong>
+                <li>WINDOWS   SERVER<br>
+                    Double-click the <strong>installall.bat</strong> file                 
+                <li>MAC OS X<br>
+                    Double-click the <strong>installall.command</strong> file
+                </ul>
+            <h3>To view this example on iOS</h3>
+            <ol>
+            <li>On an iOS device, enter the URL at the lower-left corner of this page into Safari.<br>
+            -or-
+            <li>Copy this example to the <strong>documents</strong> directory on your web server, and then open this page in Safari on an iOS device.
+            </ol>
+			<h3>Instructions</h3>
+            <ol>
+                <li>Read the Tutorials listed below.
+                <li>Click the <strong>Connect</strong> button. The video will start playing.
+            </ol>
+            <h3>Tutorials</h3>
+            <ol>
+            <li><a href="http://www.wowza.com/forums/content.php?290-How-to-play-your-first-video-on-demand-stream-(video-tutorial)">How to play your first video on demand stream (video tutorial)</a>
+            <li><a href="http://www.wowza.com/forums/content.php?35-How-to-set-up-video-on-demand-streaming">How to set up video on-demand streaming</a>
+			</ol>
+            <h3>Additional Resources</h3>
+            <ol>
+            <li><a href="http://www.wowza.com/forums/content.php?3-quick-start-guide">Quick Start Guide</a>
+            <li><a href="http://www.wowza.com/forums/forumdisplay.php?50-Video-On-Demand-Streaming-Discussion">Video On Demand Streaming Discussion Forum</a>
+            <li><a href="http://www.wowza.com/forums/content.php?9-video-on-demand-streaming">Video On Demand Streaming Articles</a>
+			</ol>
+			<h3>To play your own content</h3>
+            <ol>
+            	<li>Copy your video files to the Wowza <strong>[install-dir]\content</strong> directory.
+                <li>In the <strong>Stream</strong> field, change the mp4 file name to match one of your video files.
+                <li>Click the <strong>Connect</strong> button. Your video will start playing.
+			</ol>
+        </div>
+		<!-- FOOTER -->
+        <div class="span-24">
+            <hr class="heading">
+            <div class="span-1">
+            	<img src="img/icon-company.png" width="34" height="35" />
+            </div>
+            <div class="span-23 last copyright">
+                &nbsp;&#169;&nbsp;2012 Wowza Media Systems, LLC. All rights reserved.
+            </div>
+        </div>
+		<!-- END FOOTER -->
+	</div>
+</body>
+</html>
